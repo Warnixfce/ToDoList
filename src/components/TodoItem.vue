@@ -8,8 +8,7 @@
              @blur="doneEdit" @keyup.enter="doneEdit" @keyup.esc="cancelEdit"
              v-focus>             
          </div>
-         <div>
-             <button @click="pluralize">Plural</button>
+         <div>             
             <span class="remove-item" @click="removeTodo(todo.id)">
                 &times;
             </span>
@@ -38,13 +37,7 @@ export default {
             'editing': this.todo.editing,
             'beforeEditCache': '',
         }
-    },
-    created() {
-        eventBus.$on('pluralize', this.handlePluralize)
-    },
-    beforeDestroy() {
-        eventBus.$off('pluralize', this.handlePluralize)
-    },
+    },    
     watch: {
         checkAll() { 
             this.completed = this.checkAll ? true : this.todo.completed
@@ -80,19 +73,6 @@ export default {
         cancelEdit() {
           this.title = this.beforeEditCache
           this.editing = false
-        },
-        pluralize() {
-            eventBus.$emit('pluralize')
-        },
-        handlePluralize() {
-            this.title = this.title + 's'
-            const index = this.$store.state.todos.findIndex(item => item.id == this.id)
-            this.$store.state.todos.splice(index, 1, {
-            'id': this.id,
-             'title': this.title,
-             'completed': this.completed,
-             'editing': this.editing,
-            })
         }
     }
 }
