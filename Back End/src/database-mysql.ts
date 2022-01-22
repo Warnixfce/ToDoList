@@ -1,8 +1,9 @@
 import {Connection} from "mysql";
+import {ITodosRepository} from "./i-todos-repository";
 
 const databaseMysql = require('mysql');
 
-export class MySqlDatabase {
+export class MySqlTodosRepository implements ITodosRepository {
     private connection: Connection;
     private table = 'todos'
 
@@ -16,7 +17,7 @@ export class MySqlDatabase {
         this.CheckConnection();
     }
 
-    public Retrieve(callback): void {
+    Retrieve(callback): void {
         const sql = `SELECT * FROM ${this.table}`;
 
         this.connection.query(sql, (error, results) => {
@@ -25,7 +26,7 @@ export class MySqlDatabase {
         });
     }
 
-    public Add(todoObj: { id: any; completed: any; title: any }, callback) {
+    Add(todoObj: { id: any; completed: any; title: any }, callback) {
         const sql = `INSERT INTO ${this.table} SET ?`;
 
         this.connection.query(sql, todoObj, error => {
@@ -34,7 +35,7 @@ export class MySqlDatabase {
         });
     }
 
-    public Delete(id: any, callback: () => any) {
+    Delete(id: any, callback: () => any) {
         const sql = `DELETE FROM ${this.table} WHERE id= ${id}`;
 
         this.connection.query(sql, error => {
@@ -43,7 +44,7 @@ export class MySqlDatabase {
         });
     }
 
-    public Update(todoObj: { id: any; completed: any; title: any }, callback: (results) => any) {
+    Update(todoObj: { id: any; completed: any; title: any }, callback: (results) => any) {
         const sql = `UPDATE ${this.table} SET title = '${todoObj.title}', completed='${todoObj.completed ? 1:0}' WHERE id =${todoObj.id}`;
 
         this.connection.query(sql, error => {

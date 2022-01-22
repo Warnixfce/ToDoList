@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c047865-22d4-49d5-8a11-d504b8c3da7b" name="Changes" comment="Division changes">
+      <change afterPath="$PROJECT_DIR$/src/i-todos-repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database-mysql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database-mysql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/express-delivery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/express-delivery.ts" afterDir="false" />
     </list>
     <list id="7d677a42-4d2c-463d-91ad-c18aac14983c" name="Changes by Blas" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/express-delivery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/express-delivery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +39,10 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/express-delivery.ts">
       <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="3c047865-22d4-49d5-8a11-d504b8c3da7b" />
-        <range start1="8" end1="10" start2="9" end2="9" changelist="3c047865-22d4-49d5-8a11-d504b8c3da7b" />
-        <range start1="11" end1="12" start2="10" end2="13" changelist="3c047865-22d4-49d5-8a11-d504b8c3da7b" />
-        <range start1="15" end1="15" start2="16" end2="22" changelist="3c047865-22d4-49d5-8a11-d504b8c3da7b" />
-        <range start1="30" end1="81" start2="37" end2="37" changelist="7d677a42-4d2c-463d-91ad-c18aac14983c" />
+        <range start1="2" end1="3" start2="2" end2="2" changelist="7d677a42-4d2c-463d-91ad-c18aac14983c" />
+        <range start1="7" end1="7" start2="6" end2="12" changelist="3c047865-22d4-49d5-8a11-d504b8c3da7b" />
+        <range start1="10" end1="13" start2="15" end2="16" changelist="7d677a42-4d2c-463d-91ad-c18aac14983c" />
+        <range start1="15" end1="21" start2="18" end2="18" changelist="7d677a42-4d2c-463d-91ad-c18aac14983c" />
       </ranges>
     </file>
   </component>
@@ -84,7 +87,7 @@
       <workItem from="1642796305861" duration="4100000" />
       <workItem from="1642800498903" duration="241000" />
       <workItem from="1642800790784" duration="63000" />
-      <workItem from="1642875298509" duration="8017000" />
+      <workItem from="1642875298509" duration="10111000" />
     </task>
     <servers />
   </component>
@@ -94,6 +97,8 @@
       <list>
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/src/express-delivery.js" />
+        <option value="$PROJECT_DIR$/src/routes/routes.js" />
+        <option value="$PROJECT_DIR$/src/i-todos-repository.js" />
       </list>
     </option>
   </component>

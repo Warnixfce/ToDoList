@@ -1,34 +1,40 @@
 import {Express} from "express";
-import {MySqlDatabase} from "../database-mysql";
+import {ITodosRepository} from "../i-todos-repository";
 
 export class Routes{
-    public setupRoutes(app: Express, database: MySqlDatabase) {
-        this.indexRoute(app);
-        this.getRoute(app, database);
-        this.addRoute(app, database);
-        this.updateRoute(app, database);
-        this.deleteRoute(app, database);
+    private readonly database: ITodosRepository;
+
+    constructor(database: ITodosRepository) {
+        this.database = database;
     }
 
-    private deleteRoute(app: Express, database: MySqlDatabase) {
+    public setupRoutes(app: Express) {
+        this.indexRoute(app);
+        this.getRoute(app);
+        this.addRoute(app);
+        this.updateRoute(app);
+        this.deleteRoute(app);
+    }
+
+    private deleteRoute(app: Express) {
         app.delete('/todos/:id', (req, res) => {
             const {id} = req.params;
-            database.Delete(id, () => res.send())
+            this.database.Delete(id, () => res.send())
         });
     }
 
-    private updateRoute(app: Express, database: MySqlDatabase) {
+    private updateRoute(app: Express) {
         app.patch('/todos/:id', (req, res) => {
             const todoObj = {
                 id: req.params,
                 title: req.body.title,
                 completed: req.body.completed
             };
-            database.Update(todoObj, results => res.json(results))
+            this.database.Update(todoObj, results => res.json(results))
         });
     }
 
-    private addRoute(app: Express, database: MySqlDatabase) {
+    private addRoute(app: Express) {
         app.post('/todos', (req, res) => {
             const todoObj = {
                 id: req.body.id,
@@ -36,13 +42,13 @@ export class Routes{
                 completed: req.body.completed
             };
 
-            database.Add(todoObj, results => res.json(results))
+            this.database.Add(todoObj, results => res.json(results))
         });
     }
 
-    private getRoute(app: Express, database: MySqlDatabase) {
+    private getRoute(app: Express) {
         app.get('/todos', (req, res) => {
-            database.Retrieve(results => res.json(results))
+            this.database.Retrieve(results => res.json(results))
         });
     }
 

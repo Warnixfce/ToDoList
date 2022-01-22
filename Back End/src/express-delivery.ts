@@ -1,23 +1,20 @@
 import express, {Express} from "express";
 import bodyParser from "body-parser";
-import {MySqlDatabase} from "./database-mysql";
 import {Routes} from "./routes/routes";
 
 export class ExpressDelivery{
     private port = 3050;
+    private readonly routes: Routes;
+
+    constructor(routes: Routes) {
+        this.routes = routes;
+    }
+
     public init(): void {
         let app = express();
         this.setupHeaders(app);
-        let database = this.createDatabase();
-        let routes = new Routes()
-        routes.setupRoutes(app, database)
+        this.routes.setupRoutes(app)
         this.startListening(app);
-    }
-
-    private createDatabase(): MySqlDatabase {
-        let db = new MySqlDatabase()
-        db.Init();
-        return db;
     }
 
     private startListening(app: Express) {
