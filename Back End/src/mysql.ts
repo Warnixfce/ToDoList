@@ -1,4 +1,7 @@
-class MySqlDatabase {
+// import {mysql} from 'mysql'
+const mysql = require('mysql');
+
+export class MySqlDatabase {
     private connection: any;
 
     private table = 'todos'
