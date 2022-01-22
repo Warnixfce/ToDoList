@@ -1,20 +1,20 @@
-// import {mysql} from 'mysql'
-const mysql = require('mysql');
+import {Connection} from "mysql";
+
+const databaseMysql = require('mysql');
 
 export class MySqlDatabase {
-    private connection: any;
-
+    private connection: Connection;
     private table = 'todos'
 
     public Init(): void {
-        this.connection = mysql.createConnection({
+        this.connection = databaseMysql.createConnection({
             host: 'localhost',
             user: 'root',
             password: 'PcB9elN6DelCis76',
             database: 'node22_mysql'
         });
+        this.CheckConnection();
     }
-
 
     public Retrieve(callback): void {
         const sql = `SELECT * FROM ${this.table}`;
@@ -25,7 +25,7 @@ export class MySqlDatabase {
         });
     }
 
-    Add(todoObj: { id: any; completed: any; title: any }, callback) {
+    public Add(todoObj: { id: any; completed: any; title: any }, callback) {
         const sql = `INSERT INTO ${this.table} SET ?`;
 
         this.connection.query(sql, todoObj, error => {
@@ -34,7 +34,7 @@ export class MySqlDatabase {
         });
     }
 
-    Delete(id: any, callback: () => any) {
+    public Delete(id: any, callback: () => any) {
         const sql = `DELETE FROM ${this.table} WHERE id= ${id}`;
 
         this.connection.query(sql, error => {
@@ -43,7 +43,7 @@ export class MySqlDatabase {
         });
     }
 
-    Update(todoObj: { id: any; completed: any; title: any }, callback: (results) => any) {
+    public Update(todoObj: { id: any; completed: any; title: any }, callback: (results) => any) {
         const sql = `UPDATE ${this.table} SET title = '${todoObj.title}', completed='${todoObj.completed ? 1:0}' WHERE id =${todoObj.id}`;
 
         this.connection.query(sql, error => {
@@ -52,7 +52,7 @@ export class MySqlDatabase {
         });
     }
 
-    CheckConnection() {
+    private CheckConnection() {
         this.connection.connect(error => {
             if (error) throw error;
             console.log('Database server running!');
